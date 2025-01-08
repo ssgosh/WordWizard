@@ -5,7 +5,7 @@ import google.generativeai as genai
 from flask_cors import CORS, cross_origin
 import time
 
-load_dotenv()
+# load_dotenv()
 
 def load_prompt():
     with open("prompt.txt", "r") as f:
