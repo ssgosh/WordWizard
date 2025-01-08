@@ -89,6 +89,15 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .fetch-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #3e7947;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -152,10 +161,11 @@
             }
 
             // Fetch story on page load
-            fetchStory();
+            // fetchStory();
 
             // Add event listener to the button
             document.querySelector('.fetch-button').addEventListener('click', fetchStory);
+            // document.getElementById('fetch-button').addEventListener('click', fetchStory);
 
             document.addEventListener('click', function(event) {
                 const highlights = document.querySelectorAll('.highlight');
@@ -179,6 +189,7 @@
 <body>
     <div class="button-container">
         <button class="fetch-button">Fetch New Story</button>
+        <!-- <button class="settings-button" id="fetch-button">Fetch New Story</button> -->
         <button class="settings-button">Settings</button>
     </div>
     <div class="container"></div>
