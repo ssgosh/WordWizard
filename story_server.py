@@ -1,7 +1,7 @@
 import sys, os
 from flask import Flask, render_template
 import google.generativeai as genai
-from flask_cors import CORS, cross_origin
+# from flask_cors import CORS, cross_origin
 import time
 import os
 import time
@@ -34,10 +34,10 @@ generation_config = {
 }
 
 app = Flask(__name__, template_folder='./html')
-CORS(app, supports_credentials=True)
+# CORS(app, supports_credentials=True)
 
 
-@cross_origin()
+# @cross_origin()
 @app.route('/api/story', methods=['GET'])
 def get_story():
     if api_key is None:
