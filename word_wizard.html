@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Wizard!</title>
+    <title>Word Wizard</title>
     <style>
+        /* Existing styles */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
@@ -17,19 +18,6 @@
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .button-container {
-            text-align: center;
-            margin: 20px;
-        }
-        .fetch-button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #1e88e5;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
         h1 {
             font-size: 2.5em;
@@ -88,6 +76,19 @@
             font-size: 1.2em;
             margin-bottom: 10px;
         }
+        .button-container {
+            text-align: right;
+            padding: 10px;
+        }
+        .settings-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -114,16 +115,18 @@
                     data.paragraphs.forEach(paragraph => {
                         const p = document.createElement('p');
                         let text = paragraph.text;
-                        for (const [word, meaning] of Object.entries(paragraph.words)) {
-                            const highlightedWord = `<span class="highlight">${word}<span class="tooltip">${meaning}</span></span>`;
-                            // text = text.replace(`__${word}__`, highlightedWord);
-                            text = text.replace(`${word}`, highlightedWord);
+
+                        // Ensure all instances of the word are highlighted without underscores
+                        Object.entries(paragraph.words).forEach(([word, meaning]) => {
+                            const regex = new RegExp(`\\b${word}\\b`, 'g');
+                            text = text.replace(regex, `<span class="highlight">${word}<span class="tooltip">${meaning}</span></span>`);
 
                             // Add to summary
                             if (!summary[word]) {
                                 summary[word] = meaning;
                             }
-                        }
+                        });
+                        
                         p.innerHTML = text;
                         container.appendChild(p);
                     });
@@ -165,12 +168,18 @@
                     }
                 });
             });
+
+            // Event listener for settings button
+            document.querySelector('.settings-button').addEventListener('click', function() {
+                window.location.href = 'settings.html';
+            });
         });
     </script>
 </head>
 <body>
     <div class="button-container">
         <button class="fetch-button">Fetch New Story</button>
+        <button class="settings-button">Settings</button>
     </div>
     <div class="container"></div>
 </body>

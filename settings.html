@@ -48,9 +48,16 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 10px;
         }
         button:hover {
             background-color: #1565c0;
+        }
+        .delete-button {
+            background-color: #e53935;
+        }
+        .delete-button:hover {
+            background-color: #c62828;
         }
     </style>
     <script>
@@ -63,6 +70,13 @@
             } else {
                 alert('Please enter an API Key.');
             }
+        }
+
+        function deleteApiKey() {
+            window.pywebview.api.deleteApiKey().then(() => {
+                alert('API Key deleted successfully!');
+                document.getElementById('api-key').value = '';
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -80,6 +94,7 @@
         <label for="api-key">Gemini API Key:</label>
         <input type="password" id="api-key" placeholder="Enter your API Key">
         <button onclick="saveApiKey()">Save</button>
+        <button class="delete-button" onclick="deleteApiKey()">Delete API Key</button>
     </div>
 </body>
 </html>
