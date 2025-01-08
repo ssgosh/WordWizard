@@ -37,6 +37,6 @@ else:
     os.environ['GEMINI_API_KEY'] = api_key
     subprocess.Popen(['waitress-serve', '--listen=0.0.0.0:5000', 'story_server:app'])
     time.sleep(5)
-    webview.create_window('Word Wizard', 'word_wizard.html', js_api=api)
+    webview.create_window('Word Wizard', 'word_wizard.html', js_api=api, text_select=True)
 
 webview.start()
