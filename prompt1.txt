@@ -1,0 +1,28 @@
+Please generate a a fun and engaging story with SAT-level vocabulary words, to help a user learn and retain their meanings.
+The response should be in JSON format with a title, an array of paragraphs (each with text and a list of highlighted words and their meanings).
+Please generate 3-4 such words per paragraph.
+Surround words by double underscores for the highlights, as __such__.
+If your title contains any SAT-level words, those must be used in the text as well, and their meaning should be given. 
+Output only at most 400 words in the story.
+Here is an example of the output JSON format: 
+{ 
+    "title": "The Enigmatic Forest",
+    "paragraphs": [
+        {
+            "text": "In the heart of a __secluded__ village, lived a young boy named Oliver. He possessed an __enigmatic__ aura that intrigued everyone around him.",
+            "words": {
+                "secluded": "Hidden from general view or use"
+                "enigmatic": "difficult to interpret or understand; mysterious.",
+                } 
+        },
+        {
+            "text": "One day, while exploring the periphery of the village, he discovered an __abstruse__ trail that led into the dense forest. His curiosity __piqued__, Oliver __ventured__ __forth__.",
+            "words": {
+                "abstruse": "difficult to understand; obscure.",
+                "piqued": "Stimulate; cause a feeling of interest or curiosity",
+                "ventured": "Proceed somewhere despite the risk of possible dangers",
+                "forth" : "[archaic] From a particular thing, place or position"
+            }
+        }
+    ]
+}
