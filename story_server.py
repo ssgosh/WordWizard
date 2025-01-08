@@ -10,7 +10,7 @@ import keyring
 
 
 def load_prompt():
-    with open("prompt.txt", "r") as f:
+    with open("./prompts/prompt.txt", "r") as f:
         return ''.join(f.readlines())
 
 
