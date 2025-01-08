@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Story</title>
+    <title>Word Wizard!</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -17,6 +17,19 @@
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .fetch-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
         h1 {
             font-size: 2.5em;
@@ -80,71 +93,85 @@
         document.addEventListener('DOMContentLoaded', function() {
             const apiUrl = 'http://localhost:5000/api/story';
 
-            fetch(apiUrl, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                const container = document.querySelector('.container');
-                const title = document.createElement('h1');
-                title.textContent = data.title;
-                container.appendChild(title);
-
-                const summary = {};
-                
-                data.paragraphs.forEach(paragraph => {
-                    const p = document.createElement('p');
-                    let text = paragraph.text;
-                    for (const [word, meaning] of Object.entries(paragraph.words)) {
-                        const highlightedWord = `<span class="highlight">${word}<span class="tooltip">${meaning}</span></span>`;
-                        text = text.replace(`__${word}__`, highlightedWord);
-
-                        // Add to summary
-                        if (!summary[word]) {
-                            summary[word] = meaning;
-                        }
+            function fetchStory() {
+                fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
                     }
-                    p.innerHTML = text;
-                    container.appendChild(p);
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.querySelector('.container');
+                    container.innerHTML = '';  // Clear previous content
+
+                    const title = document.createElement('h1');
+                    title.textContent = data.title;
+                    container.appendChild(title);
+
+                    const summary = {};
+                    
+                    data.paragraphs.forEach(paragraph => {
+                        const p = document.createElement('p');
+                        let text = paragraph.text;
+                        for (const [word, meaning] of Object.entries(paragraph.words)) {
+                            const highlightedWord = `<span class="highlight">${word}<span class="tooltip">${meaning}</span></span>`;
+                            // text = text.replace(`__${word}__`, highlightedWord);
+                            text = text.replace(`${word}`, highlightedWord);
+
+                            // Add to summary
+                            if (!summary[word]) {
+                                summary[word] = meaning;
+                            }
+                        }
+                        p.innerHTML = text;
+                        container.appendChild(p);
+                    });
+
+                    // Create summary section
+                    const summarySection = document.createElement('div');
+                    summarySection.classList.add('summary');
+                    const summaryTitle = document.createElement('h2');
+                    summaryTitle.textContent = 'Summary of Words and Meanings';
+                    summarySection.appendChild(summaryTitle);
+                    const summaryList = document.createElement('ul');
+
+                    for (const [word, meaning] of Object.entries(summary)) {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${word}:</strong> ${meaning}`;
+                        summaryList.appendChild(li);
+                    }
+
+                    summarySection.appendChild(summaryList);
+                    container.appendChild(summarySection);
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            // Fetch story on page load
+            fetchStory();
+
+            // Add event listener to the button
+            document.querySelector('.fetch-button').addEventListener('click', fetchStory);
+
+            document.addEventListener('click', function(event) {
+                const highlights = document.querySelectorAll('.highlight');
+                highlights.forEach(function(highlight) {
+                    const tooltip = highlight.querySelector('.tooltip');
+                    if (highlight.contains(event.target)) {
+                        tooltip.style.display = 'block';
+                    } else {
+                        tooltip.style.display = 'none';
+                    }
                 });
-
-                // Create summary section
-                const summarySection = document.createElement('div');
-                summarySection.classList.add('summary');
-                const summaryTitle = document.createElement('h2');
-                summaryTitle.textContent = 'Summary of Words and Meanings';
-                summarySection.appendChild(summaryTitle);
-                const summaryList = document.createElement('ul');
-
-                for (const [word, meaning] of Object.entries(summary)) {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<strong>${word}:</strong> ${meaning}`;
-                    summaryList.appendChild(li);
-                }
-
-                summarySection.appendChild(summaryList);
-                container.appendChild(summarySection);
-            })
-            .catch(error => console.error('Error:', error));
-        });
-
-        document.addEventListener('click', function(event) {
-            const highlights = document.querySelectorAll('.highlight');
-            highlights.forEach(function(highlight) {
-                const tooltip = highlight.querySelector('.tooltip');
-                if (highlight.contains(event.target)) {
-                    tooltip.style.display = 'block';
-                } else {
-                    tooltip.style.display = 'none';
-                }
             });
         });
     </script>
 </head>
 <body>
+    <div class="button-container">
+        <button class="fetch-button">Fetch New Story</button>
+    </div>
     <div class="container"></div>
 </body>
 </html>
