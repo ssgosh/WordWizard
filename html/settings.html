@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+        .delete-button {
+            background-color: #e53935;
+        }
+        .delete-button:hover {
+            background-color: #c62828;
+        }
+        .button-container {
+            text-align: right;
+            padding: 10px;
+        }
+        .settings-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .fetch-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #3e7947;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function saveApiKey() {
+            const apiKey = document.getElementById('api-key').value;
+            if (apiKey) {
+                window.pywebview.api.setApiKey(apiKey).then(() => {
+                    alert('API Key saved successfully!');
+                });
+            } else {
+                alert('Please enter an API Key.');
+            }
+        }
+
+        function deleteApiKey() {
+            window.pywebview.api.deleteApiKey().then(() => {
+                alert('API Key deleted successfully!');
+                document.getElementById('api-key').value = '';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Event listener for settings button
+            document.querySelector('.settings-button').addEventListener('click', function() {
+                window.location.href = 'settings.html';
+            });
+
+            document.querySelector('.fetch-button').addEventListener('click', function() {
+                window.location.href = 'word_wizard.html';
+            });
+            window.pywebview.api.getApiKey().then(apiKey => {
+                if (apiKey) {
+                    document.getElementById('api-key').value = apiKey;
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="button-container">
+        <button class="fetch-button">Fetch New Story</button>
+        <!-- <button class="settings-button" id="fetch-button">Fetch New Story</button> -->
+        <button class="settings-button">Settings</button>
+    </div>
+    <div class="container">
+        <h1>API Key Settings</h1>
+        <label for="api-key">Gemini API Key:</label>
+        <input type="password" id="api-key" placeholder="Enter your API Key">
+        <button onclick="saveApiKey()">Save</button>
+        <button class="delete-button" onclick="deleteApiKey()">Delete API Key</button>
+    </div>
+</body>
+</html>
