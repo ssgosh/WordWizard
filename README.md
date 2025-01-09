@@ -7,15 +7,16 @@
 
 - [Word Wizard](#word-wizard)
   - [Features](#features)
-  - [Usage](#usage)
-    - [Windows end-users](#windows-end-users)
-  - [Cross-Platform](#cross-platform)
+  - [Usage for Windows end-users](#usage-for-windows-end-users)
+  - [Cross-Platform Usage](#cross-platform-usage)
     - [Prerequisites](#prerequisites)
     - [Install Required Python Libraries](#install-required-python-libraries)
     - [File Structure](#file-structure)
-  - [Usage](#usage-1)
+    - [Run](#run)
+    - [Screenshots](#screenshots)
   - [How It Works](#how-it-works)
-  - [API Key Management](#api-key-management)
+    - [Components](#components)
+    - [API Key Management](#api-key-management)
   - [Troubleshooting](#troubleshooting)
     - [Common Issues](#common-issues)
     - [Debugging](#debugging)
@@ -33,19 +34,17 @@ Google Gemini API is used for dynamically creating a new story every time.
 - **Settings Management**: A built-in settings menu to save and delete the Gemini API key.
 - **Cross-Platform**: Works on Windows, macOS, and Linux.
 
-## Usage 
-
-### Windows end-users
+## Usage for Windows end-users
 
 Windows binary is provided in the Releases tab on Github
 
 1. Download the zip file containing `Word Wizard.exe` from the Releases tab on Github.
-2. Double-click `Word Wizard.exe` to start the application.
+2. Unzip and double-click `Word Wizard.exe` to start the application.
 3. The application will ask for the Gemini API key via a settings menu if it is not already set.
 4. Use the settings menu to save or delete the Gemini API key as needed.
 5. Fetch new stories and build your vocabulary!
 
-## Cross-Platform
+## Cross-Platform Usage
 
 ### Prerequisites
 
@@ -86,7 +85,7 @@ WordWizard
 python word_wizard.py
 ```
 
-### Screenshot
+### Screenshots
 
 ## How It Works
 
