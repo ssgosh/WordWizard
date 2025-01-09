@@ -90,7 +90,7 @@ python word_wizard.py
 - Story Window
 
 <!-- ![Story Window](https://github.com/user-attachments/assets/26e8ee55-df75-4e5e-8741-ebb3d880dda2) -->
-<img src="https://github.com/user-attachments/assets/26e8ee55-df75-4e5e-8741-ebb3d880dda2" width="75%">
+<img src="https://github.com/user-attachments/assets/26e8ee55-df75-4e5e-8741-ebb3d880dda2" width="100%">
 
 - Settings Window
 
