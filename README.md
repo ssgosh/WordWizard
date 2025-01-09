@@ -36,16 +36,20 @@ Google Gemini API is used for dynamically creating a new story every time.
 
 ## Usage for Windows end-users
 
-Windows binary is provided in the Releases tab on Github
+Windows binary is provided in the Releases tab on Github <text color=red>ERROR</text>
+<p style="color:red❎☠️"> Hello </p> :":"
 
 1. Download `word_wizard.zip` from the Releases tab on Github.
-2. Since the program is not signed, windows will block it from being run. For correct functionality, do the following:
-   1. Right click on `word_wizard.zip` and select `Properties` from the context menu.
-   2. Select `Unblock` and click `OK` 
-5. Unzip and double-click `Word Wizard.exe` to start the application.
-6. The application will ask for the Gemini API key via a settings menu if it is not already set.
-7. Use the settings menu to save or delete the Gemini API key as needed.
-8. Fetch new stories and build your vocabulary!
+
+> [!CAUTION]
+> - Since the program is not signed, windows will block it from being run. For correct functionality, do the following:
+>   - Right click on `word_wizard.zip` and select `Properties` from the context menu.
+>   - Select `Unblock` and click `OK` 
+
+2. Unzip and double-click `Word Wizard.exe` to start the application.
+3. The application will ask for the Gemini API key via a settings menu if it is not already set.
+4. Use the settings menu to save or delete the Gemini API key as needed.
+5. Fetch new stories and build your vocabulary!
 
 ## Cross-Platform Usage
 
