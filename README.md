@@ -36,8 +36,7 @@ Google Gemini API is used for dynamically creating a new story every time.
 
 ## Usage for Windows end-users
 
-Windows binary is provided in the Releases tab on Github <text color=red>ERROR</text>
-<p style="color:red❎☠️"> Hello </p> :":"
+Windows binary is provided in the Releases tab on Github
 
 1. Download `word_wizard.zip` from the Releases tab on Github.
 
