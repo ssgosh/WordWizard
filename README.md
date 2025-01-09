@@ -7,12 +7,13 @@
 
 - [Word Wizard](#word-wizard)
   - [Features](#features)
-  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Windows end-users](#windows-end-users)
+  - [Cross-Platform](#cross-platform)
     - [Prerequisites](#prerequisites)
     - [Install Required Python Libraries](#install-required-python-libraries)
     - [File Structure](#file-structure)
-  - [Usage](#usage)
-    - [Running the Application](#running-the-application)
+  - [Usage](#usage-1)
   - [How It Works](#how-it-works)
   - [API Key Management](#api-key-management)
   - [Troubleshooting](#troubleshooting)
@@ -32,7 +33,19 @@ Google Gemini API is used for dynamically creating a new story every time.
 - **Settings Management**: A built-in settings menu to save and delete the Gemini API key.
 - **Cross-Platform**: Works on Windows, macOS, and Linux.
 
-## Installation
+## Usage 
+
+### Windows end-users
+
+Windows binary is provided in the Releases tab on Github
+
+1. Download the zip file containing `Word Wizard.exe` from the Releases tab on Github.
+2. Double-click `Word Wizard.exe` to start the application.
+3. The application will ask for the Gemini API key via a settings menu if it is not already set.
+4. Use the settings menu to save or delete the Gemini API key as needed.
+5. Fetch new stories and build your vocabulary!
+
+## Cross-Platform
 
 ### Prerequisites
 
@@ -61,14 +74,6 @@ WordWizard
 
 ## Usage
 
-### Running the Application
-
-1. Download the zip file containing `Word Wizard.exe` from the Releases tab on Github.
-2. Double-click `Word Wizard.exe` to start the application.
-3. The application will ask for the Gemini API key via a settings menu if it is not already set.
-4. Use the settings menu to save or delete the Gemini API key as needed.
-5. Fetch new stories and build your vocabulary!
-
 ## How It Works
 
 - **word_wizard.py**: Starts a Flask server and opens the application in a webview.
@@ -78,9 +83,8 @@ WordWizard
 
 ## API Key Management
 
-
-- The API key is stored securely using `keyring`.
-
+- Users must provide the application with a Google Gemini API key in order to use WordWizard
+- The API key is **stored securely on their local computer** using `keyring`.
 - Users can save and delete the API key via the settings menu in the application.
 
 ## Troubleshooting
