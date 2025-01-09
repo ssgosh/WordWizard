@@ -54,6 +54,14 @@ Windows binary is provided in the Releases tab on Github
 
 ### Install Required Python Libraries
 
+Following python packages are required:
+
+```bash
+pip install flask google-generativeai keyring pywebview
+```
+
+or,
+
 ```bash
 pip install -r requirements.txt
 ```
