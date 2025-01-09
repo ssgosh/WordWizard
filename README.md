@@ -87,10 +87,21 @@ python word_wizard.py
 
 ### Screenshots
 
+- Story Window
+
+<!-- ![Story Window](https://github.com/user-attachments/assets/26e8ee55-df75-4e5e-8741-ebb3d880dda2) -->
+<img src="https://github.com/user-attachments/assets/26e8ee55-df75-4e5e-8741-ebb3d880dda2" width="75%">
+
+- Settings Window
+
+<!-- ![Settings Window](https://github.com/user-attachments/assets/97e5d8a1-4850-493a-8155-b45a7c0a0ea3) -->
+<img src="https://github.com/user-attachments/assets/97e5d8a1-4850-493a-8155-b45a7c0a0ea3" width="60%">
+
 ## How It Works
 
 ### Components
 - **word_wizard.py**: Starts a Flask server and opens the application in a webview.
+
 - **html/word_wizard.html**: Main HTML page for displaying stories.
 - **html/settings.html**: Settings page for managing the Gemini API key.
 - **prompts/prompt.txt**: Contains the prompt used by the Gemini API to generate stories.
