@@ -80,16 +80,23 @@ WordWizard
 └── README.md
 ```
 
-## Usage
+### Run
+
+```
+python word_wizard.py
+```
+
+### Screenshot
 
 ## How It Works
 
+### Components
 - **word_wizard.py**: Starts a Flask server and opens the application in a webview.
 - **html/word_wizard.html**: Main HTML page for displaying stories.
 - **html/settings.html**: Settings page for managing the Gemini API key.
 - **prompts/prompt.txt**: Contains the prompt used by the Gemini API to generate stories.
 
-## API Key Management
+### API Key Management
 
 - Users must provide the application with a Google Gemini API key in order to use WordWizard
 - The API key is **stored securely on their local computer** using `keyring`.
